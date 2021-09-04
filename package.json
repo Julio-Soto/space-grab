@@ -1,0 +1,23 @@
+{
+  "name": "space-grab",
+  "version": "1.0.0",
+  "description": "HTML/Javascript Game",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Julio-Soto/space-grab.git"
+  },
+  "keywords": [
+    "game",
+    "space"
+  ],
+  "author": "Julio Soto",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Julio-Soto/space-grab/issues"
+  },
+  "homepage": "https://github.com/Julio-Soto/space-grab#readme"
+}
