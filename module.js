@@ -2,7 +2,7 @@
 export function eraseCanvas(ctx,opacity) {
     ctx.beginPath();
     ctx.rect(0, 0, 900, 500);
-    ctx.fillStyle = "rgba(26, 0, 0, " + opacity + ")";
+    ctx.fillStyle = "rgba(0, 0, 25, " + opacity + ")";
     ctx.fill();
     //ctx.stroke();
   }
