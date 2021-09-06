@@ -2,9 +2,9 @@
 // by Julio Soto @qodenite
 // JS13k 2021
 
-import {eraseCanvas, startControls, drawCircle} from './module.js'
+import {eraseCanvas, startControls, drawCircle} from './utilities.js'
 import {champion, game, enemy} from './entities.js'
-import { champEdge, enemyEdge } from './collisions.js'
+import { champEdge, enemyEdge, champEnemies } from './collisions.js'
 
 const SG_game = new game()
 let champ = new champion(10,100,2,1,0)
@@ -14,7 +14,6 @@ for(let i = 0; i < 3; ++i) {
     enemies[i] = new enemy(10 + Math.random() * 780,10 + Math.random() * 430,2,xs,2 - xs)
 }
 startControls(champ)
-
 window.onload = function() {
     const interval = setInterval(mainLoop,1000/SG_game.FPS)
 }
@@ -27,6 +26,7 @@ const mainLoop = () => {
         en.y += (en.speed * en.Ydir)
     })
     champEdge(champ)
+    if(champEnemies(champ,enemies)) console.log('collided')
     enemies.forEach( en => {
         enemyEdge(en)
     })
