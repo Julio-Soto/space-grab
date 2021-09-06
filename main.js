@@ -9,13 +9,14 @@ import { champEdge, enemyEdge } from './collisions.js'
 const SG_game = new game()
 let champ = new champion(10,100,2,1,0)
 let enemies = new Array(3)
-for(let i = 0; i < 3; ++i)
-    enemies[i] = new enemy(400,225,2,Math.random(),Math.random())
+for(let i = 0; i < 3; ++i) {
+    let xs = 0.5 + Math.random() 
+    enemies[i] = new enemy(10 + Math.random() * 780,10 + Math.random() * 430,2,xs,2 - xs)
+}
 startControls(champ)
 
 window.onload = function() {
     const interval = setInterval(mainLoop,1000/SG_game.FPS)
-    console.log(SG_game.C)
 }
 const mainLoop = () => {
     eraseCanvas(SG_game.ctx,1)

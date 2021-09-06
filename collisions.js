@@ -1,8 +1,12 @@
 export function champEdge(champ) {
-    if(champ.x == 800-10 || champ.x == 10)
-        champ.Xdir = 0
-    if(champ.y == 450-10 || champ.y == 10)
-        champ.Ydir = 0
+    if(champ.x > 790)
+        champ.x = 790
+    if(champ.x < 10)
+        champ.x = 10
+    if(champ.y > 440)
+        champ.y = 440
+    if(champ.y < 10)
+        champ.y = 10
 }
 
 export function enemyEdge(enemy) {
