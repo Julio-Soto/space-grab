@@ -6,6 +6,10 @@ export class champion {
         this.Xdir = Xdir
         this.Ydir = Ydir
     }
+    onDeath() {
+        this.x = 10
+        this.y = 10
+    }
 }
 export class enemy {
     constructor(x,y,s,Xdir,Ydir){
@@ -20,7 +24,8 @@ export class game {
     constructor() {
         this.C = document.getElementById('C'),
         this.ctx = this.C.getContext("2d"),
-        this.container = document.getElementById('container'),
-        this.FPS = 60
+        this.FPS = 60,
+        this.interval = new Number(),
+        this.paused = false
     }
 }
