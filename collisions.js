@@ -3,8 +3,8 @@ export function champEdge(champ) {
         champ.x = 790
     if(champ.x < 10)
         champ.x = 10
-    if(champ.y > 440)
-        champ.y = 440
+    if(champ.y > 450)
+        champ.y = 450
     if(champ.y < 10)
         champ.y = 10
 }
@@ -18,8 +18,8 @@ export function champEnemies(champ,enemies) {
     return collided
 }
 export function enemyEdge(enemy) {
-    if(enemy.x >= 800-10 || enemy.x <= 10)
+    if(enemy.x >= 790 || enemy.x <= 10)
         enemy.Xdir *= -1
-    if(enemy.y >= 450-10 || enemy.y <= 10)
+    if(enemy.y >= 450 || enemy.y <= 10)
         enemy.Ydir *= -1
 }

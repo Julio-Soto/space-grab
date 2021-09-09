@@ -54,17 +54,11 @@ export class starField {
         }
     }
     draw(ctx) {
-        ctx.fillStyle = '#777'
         this.stars.forEach( star => {
             ctx.fillStyle = this.colors[Math.floor(Math.random()*3)]
             ctx.rect(star.x,star.y,1,1)
             ctx.fill()
         })
-        /*for(let i = 0; i < this.num/4; ++i){
-            ctx.fillStyle = this.colors[Math.floor(Math.random()*3)]
-            ctx.rect(this.stars[i].x,this.stars[i].y,1,1)
-            ctx.fill()
-        }*/
     }
 }
 export class game {
