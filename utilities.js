@@ -18,22 +18,22 @@ export function unPauseGame(game,loop) {
 export function startControls(champ,game,loop) {
     window.addEventListener('keydown',function(e) {
         if(e.key == 'ArrowRight')
-        champ.Xdir = 1, champ.Ydir = 0;
+        champ.Xdir = 1, champ.Ydir = 0, champ.angle = 0;
         if(e.key == 'ArrowLeft')
-        champ.Xdir = -1, champ.Ydir = 0;
+        champ.Xdir = -1, champ.Ydir = 0, champ.angle = 180;
         if(e.key == 'ArrowUp')
-        champ.Ydir = -1, champ.Xdir = 0;
+        champ.Ydir = -1, champ.Xdir = 0, champ.angle = -90;
         if(e.key == 'ArrowDown')
-        champ.Ydir = 1, champ.Xdir = 0;
+        champ.Ydir = 1, champ.Xdir = 0, champ.angle = 90;
         if(e.key == ' ')
             if(game.paused == true) unPauseGame(game,loop)
     },false);
     
 }
   export function drawCircle(ctx,x,y,r,color) {
-    ctx.fillStyle = color
-    ctx.lineWidth = 2
+    ctx.strokeStyle = color
+    ctx.lineWidth = 1
     ctx.beginPath()
     ctx.arc(x,y,r,0,2*Math.PI)
-    ctx.fill()
+    ctx.stroke()
   }

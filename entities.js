@@ -5,10 +5,28 @@ export class champion {
         this.speed = s
         this.Xdir = Xdir
         this.Ydir = Ydir
+        this.angle = 0
     }
     onDeath() {
         this.x = 10
         this.y = 10
+    }
+    draw(ctx,img) {
+        ctx.translate(this.x, this.y);
+	    ctx.rotate(this.angle * Math.PI / 180);
+        ctx.drawImage(
+            img,
+            0 ,
+            0 * 8,
+            8,
+            8,
+            -10,
+            -10,
+            20,
+            20
+        )
+        ctx.rotate(this.angle * Math.PI / -180);
+	    ctx.translate(-this.x,-this.y);
     }
 }
 export class enemy {
