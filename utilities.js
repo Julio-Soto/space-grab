@@ -1,9 +1,8 @@
 
 export function eraseCanvas(ctx,opacity) {
-    ctx.beginPath();
-    ctx.rect(0, 0, 900, 500);
-    ctx.fillStyle = "rgba(0, 0, 25, " + opacity + ")";
-    ctx.fill();
+    ctx.fillStyle = '#001'//"rgba(0, 0, 25, " + opacity + ")";
+    ctx.rect(0, 0, 800, 460)
+    ctx.fill()
   }
 export function pauseGame(game) {
     game.paused = true

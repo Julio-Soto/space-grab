@@ -30,7 +30,7 @@ export class champion {
     }
 }
 export class enemy {
-    constructor(x,y,s,Xdir,Ydir){
+    constructor(x,y,s,Xdir,Ydir) {
         this.x = x
         this.y = y
         this.speed = s
@@ -38,10 +38,39 @@ export class enemy {
         this.Ydir = Ydir
     }
 }
+export class starField {
+    constructor(num) {
+        this.stars = new Array()
+        this.colors = ['#bbb', '#777', '#444'],
+        this.num  = num
+    }
+    create() {
+        this.stars = new Array()
+        let x,y
+        for(let i = 0; i < this.num; ++i){
+            x = Math.random() * 800
+            y = Math.random() * 460
+            this.stars.push({x: x,y: y})
+        }
+    }
+    draw(ctx) {
+        ctx.fillStyle = '#777'
+        this.stars.forEach( star => {
+            ctx.fillStyle = this.colors[Math.floor(Math.random()*3)]
+            ctx.rect(star.x,star.y,1,1)
+            ctx.fill()
+        })
+        /*for(let i = 0; i < this.num/4; ++i){
+            ctx.fillStyle = this.colors[Math.floor(Math.random()*3)]
+            ctx.rect(this.stars[i].x,this.stars[i].y,1,1)
+            ctx.fill()
+        }*/
+    }
+}
 export class game {
     constructor() {
-        this.C = document.getElementById('C'),
-        this.ctx = this.C.getContext("2d"),
+        this.ctx = document.getElementById('C').getContext("2d"),
+        this.ctx2 = document.getElementById('C2').getContext("2d"),
         this.FPS = 60,
         this.interval = new Number(),
         this.paused = false

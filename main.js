@@ -3,7 +3,7 @@
 // JS13k 2021
 
 import {eraseCanvas, drawCircle} from './utilities.js'
-import {champion, game, enemy} from './entities.js'
+import {champion, game, enemy, starField} from './entities.js'
 import { startControls } from './controls.js';
 import { champEdge, enemyEdge, champEnemies } from './collisions.js'
 
@@ -19,21 +19,28 @@ function setupSprites() {
 
 const SG_game = new game()
 let champ = new champion(10,10,2,1,0)
+let stars = new starField(200);
+stars.create()
+stars.draw(SG_game.ctx2)
 let enemies = new Array(3)
 for(let i = 0; i < 3; ++i) {
     let xs = 0.5 + Math.random() 
     enemies[i] = new enemy(10 + Math.random() * 780,10 + Math.random() * 430,2,xs,2 - xs)
 }
+let frames = 0
 window.onload = function() {
     console.log('onload')
-    //setupSprites().then( () => {
         console.log('page loaded')
         startControls(champ,SG_game,mainLoop)
         SG_game.interval = setInterval(mainLoop,1000/SG_game.FPS)
-   // })
 }
 const mainLoop = () => {
-    eraseCanvas(SG_game.ctx,1)
+    if(++frames == 60){
+         //eraseCanvas(SG_game.ctx2,1)
+         //stars.draw(SG_game.ctx2)
+         frames=0
+    }
+    SG_game.ctx.clearRect(0,0,800,460)
     champ.x += (champ.speed * champ.Xdir)
     champ.y += (champ.speed * champ.Ydir)
     enemies.forEach(en => {
