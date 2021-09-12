@@ -1,11 +1,11 @@
 export class champion {
-    constructor(x,y,s,Xdir,Ydir) {
+    constructor(x,y,s,Xdir,Ydir,angle) {
         this.x = x
         this.y = y
         this.speed = s
         this.Xdir = Xdir
         this.Ydir = Ydir
-        this.angle = 0
+        this.angle = angle
     }
     onDeath() {
         this.x = 10
@@ -17,13 +17,13 @@ export class champion {
         ctx.drawImage(
             img,
             0 ,
-            0 * 8,
-            8,
-            8,
+            0 * 16,
+            16,
+            16,
             -10,
             -10,
-            20,
-            20
+            24,
+            24
         )
         ctx.rotate(this.angle * Math.PI / -180);
 	    ctx.translate(-this.x,-this.y);
@@ -40,9 +40,10 @@ export class enemy {
 }
 export class starField {
     constructor(num) {
-        this.stars = new Array()
-        this.colors = ['#bbb', '#777', '#444'],
-        this.num  = num
+        this.stars = new Array(),
+        this.colors = ['#999', '#777', '#444'],
+        this.num  = num,
+        this.idx = 0
     }
     create() {
         this.stars = new Array()
@@ -59,6 +60,12 @@ export class starField {
             ctx.rect(star.x,star.y,1,1)
             ctx.fill()
         })
+    }
+    flicker(ctx) {
+        ctx.fillStyle = this.colors[Math.floor(Math.random()*3)]
+        ctx.rect(this.stars[this.idx].x,this.stars[this.idx].y,1,1)
+        ctx.fill()
+        if(++this.idx == this.num) this.idx = 0
     }
 }
 export class game {
